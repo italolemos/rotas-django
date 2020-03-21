@@ -1,22 +1,61 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<a href="{% url 'rotas:rotas-create' %}" type="button">Nova Rota</a>
+{% extends 'base.html' %}
 
-{% for rote in object_list %}
-    <section>
-    {{ rote.nome }}
-        <a href="{% url 'rotas:rotas-detail' rote.pk %}">Detalhes</a>
-        <a href="{% url 'rotas:rotas-edit' rote.pk %}">Editar</a>
-        <a href="{% url 'rotas:rotas-delete' rote.pk %}">Deletar</a>
+{% block content %}
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-spaced">The New Internet</h1>
+                <h2 class="subtitle">Decentralized, secure, private. The PiperNet is on it's way to revolutionize every
+                    smartphone, PC, and smart-fridge near you.</h2>
+                <div class="buttons is-centered"><a class="control button is-primary" href="#">Sign up for free</a><a
+                        class="control button is-light" href="#">Read more</a></div>
+            </div>
+        </div>
     </section>
-{% endfor %}
-</body>
-</html>
+    <section class="section">
+        <div class="container">
+            <h2 class="title has-text-centered">Some of our awesome features</h2>
+            <div class="columns">
+                {% for rote in object_list %}
+                    <div class="column is-3">
+                        <h4 class="title is-spaced is-4">{{ rote.nome }}</h4>
+                        <p class="subtitle is-6">{{ rote.descricao }}</p>
+                        {#                        <a href="#">Read more</a>#}
+                        <div class="buttons are-small">
+                            <a class="button is-info" href="{% url 'rotas:rotas-detail' rote.pk %}">
+                                <span>Detalhes</span>
+                                <span class="icon is-small">
+                                    <i class="far fa-file-alt"></i>
+                                </span>
+                            </a>
+                            <a class="button is-warning" href="{% url 'rotas:rotas-edit' rote.pk %}">
+                                <span>Editar</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </span>
+                            </a>
+                            <a class="button is-danger" href="{% url 'rotas:rotas-delete' rote.pk %}">
+                                <span>Deletar</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-times"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {#    <a href="{% url 'rotas:rotas-create' %}" type="button">Nova Rota</a>#}
+    {##}
+    {#    {% for rote in object_list %}#}
+    {#        <section>#}
+    {#            {{ rote.nome }}#}
+    {#            <a href="{% url 'rotas:rotas-detail' rote.pk %}">Detalhes</a>#}
+    {#            <a href="{% url 'rotas:rotas-edit' rote.pk %}">Editar</a>#}
+    {#            <a href="{% url 'rotas:rotas-delete' rote.pk %}">Deletar</a>#}
+    {#        </section>#}
+    {#    {% endfor %}#}
+
+{% endblock content %}
