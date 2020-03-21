@@ -1,5 +1,41 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Enviar</button>
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+    </form>
+    <section class="section">
+        <form method="post">{% csrf_token %}
+            <div class="field">
+                <label class="label">{{ form.nome.label }}</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Text input"
+                           id="{{ form.nome.id_for_label }}" name="{{ form.nome.html_name }}">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">{{ form.descricao.label }}</label>
+                <div class="control">
+                    <input class="input" type="text"
+                           id="{{ form.descricao.id_for_label }}" name="{{ form.descricao.html_name }}">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">{{ form.tamanho.label }}</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Text input"
+                           id="{{ form.tamanho.id_for_label }}" name="{{ form.tamanho.html_name }}">
+                </div>
+            </div>
+            <div class="field ">
+                <div class="control">
+                    <button type="submit" class="button is-success">
+                        <span class="icon is-small">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        <span>Salvar</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+{% endblock content %}

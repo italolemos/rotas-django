@@ -4,6 +4,7 @@ from .models import Rotas
 
 
 class RotasForm(forms.ModelForm):
+    descricao = forms.CharField(widget=forms.Textarea)
 
     class Meta:
         model = Rotas

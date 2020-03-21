@@ -23,6 +23,7 @@ class RotasUpdateView(UpdateView):
     model = Rotas
     fields = '__all__'
     template_name_suffix = '_update_form'
+    success_url = reverse_lazy('rotas:rotas-list')
 
 
 class RotasDeleteView(DeleteView):
