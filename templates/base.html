@@ -10,17 +10,23 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
-<div class="container is-fluid">
+ <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="https://bulma.io/images/bulma-logo.png"
+                     alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28">
+            </a>
 
-    <nav class="navbar is-dark">
-        <div class="container">
-            <div class="navbar-menu is-active">
-                <div class="navbar-start"></div>
-                <div class="navbar-brand"><a class="navbar-item" href="#">Pied Piper</a></div>
-                <div class="navbar-end"></div>
-            </div>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
     </nav>
+
+<div class="container is-fluid">
+    <br>
     {% block content %}
 
     {% endblock content %}

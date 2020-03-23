@@ -1,4 +1,18 @@
-<form method="post">{% csrf_token %}
-    <p>Are you sure you want to delete "{{ object.nome }}"?</p>
-    <input type="submit" value="Confirm">
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <form method="post">{% csrf_token %}
+        <div class="notification is-danger">
+            <p>Você tem certeza que deseja excluir "{{ object.nome }}"?</p>
+        </div>
+        <button type="submit" class="button is-danger is-outlined">
+            <span>Excluir</span>
+            <span class="icon is-small">
+                <i class="fas fa-times"></i>
+             </span>
+        </button>
+    </form>
+
+{% endblock content %}

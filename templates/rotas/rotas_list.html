@@ -4,11 +4,15 @@
     <section class="hero">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h1 class="title is-spaced">The New Internet</h1>
-                <h2 class="subtitle">Decentralized, secure, private. The PiperNet is on it's way to revolutionize every
-                    smartphone, PC, and smart-fridge near you.</h2>
+                <h1 class="title is-spaced">Mobilidade Duas Rodas</h1>
+                <h2 class="subtitle">Conheça as ciclofaixas e rotas ciclísticas da cidade do Recife</h2>
                 <div class="buttons is-centered">
-                    <a class="control button is-primary" href="{% url 'rotas:rotas-create' %}">Nova rota</a>
+                    <a class="control button is-primary" href="{% url 'rotas:rotas-create' %}">
+                        <span>Nova Rota</span>
+                        <span class="icon is-small">
+                           <i class="fas fa-plus"></i>
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -21,7 +25,6 @@
                     <div class="column is-3">
                         <h4 class="title is-spaced is-4">{{ rote.nome }}</h4>
                         <p class="subtitle is-6">{{ rote.descricao|truncatechars:20 }}</p>
-                        {#                        <a href="#">Read more</a>#}
                         <div class="buttons are-small">
                             <a class="button is-info" href="{% url 'rotas:rotas-detail' rote.pk %}">
                                 <span>Detalhes</span>
