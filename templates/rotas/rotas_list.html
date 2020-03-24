@@ -14,28 +14,31 @@
                         </span>
                     </a>
                 </div>
-                <div class="is-centered">
-                    <form action="{% url 'rotas:rotas-list' %}" method="get">
-                        <div class="field has-addons">
-                            <div class="control">
-                                <input id="search" class="input" type="text" name='q' placeholder="Encontre uma rota">
-                            </div>
-                            <div class="control">
-                                <button class="button is-info" type="submit">Buscar</button>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
             </div>
+        </div>
+    </section>
+    <section class="hero">
+        <div class="container is-centered">
+            <form action="{% url 'rotas:rotas-list' %}" method="get">
+                <div class="field has-addons">
+                    <div class="control">
+                        <input id="search" class="input" type="text" name='q' value="{{ request.GET.q }}"
+                               placeholder="Encontre uma rota">
+                    </div>
+                    <div class="control">
+                        <button class="button is-info" type="submit">Buscar</button>
+                    </div>
+                </div>
+            </form>
+
         </div>
     </section>
     <section class="section">
         <div class="container">
             <h2 class="title has-text-centered">Confira algumas rotas</h2>
-            <div class="columns">
+            <div class="columns is-multiline">
                 {% for rote in object_list %}
-                    <div class="column is-3">
+                    <div class="column is-3 box">
                         <h4 class="title is-spaced is-4">{{ rote.nome }}</h4>
                         <p class="subtitle is-6">{{ rote.descricao|truncatechars:20 }}</p>
                         <div class="buttons are-small">
@@ -59,6 +62,12 @@
                             </a>
                         </div>
                     </div>
+                {% empty %}
+                    <article class="message is-danger">
+                        <div class="message-body">
+                            <strong>Nehuma rota encontrada</strong>
+                        </div>
+                    </article>
                 {% endfor %}
             </div>
         </div>
