@@ -7,7 +7,7 @@
             <div class="field">
                 <label class="label">{{ form.nome.label }}</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Text input"
+                    <input class="input" type="text"
                            id="{{ form.nome.id_for_label }}" name="{{ form.nome.html_name }}">
                 </div>
             </div>
@@ -21,7 +21,7 @@
             <div class="field">
                 <label class="label">{{ form.tamanho.label }}</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Text input"
+                    <input class="input" type="text"
                            id="{{ form.tamanho.id_for_label }}" name="{{ form.tamanho.html_name }}">
                 </div>
             </div>
@@ -37,5 +37,9 @@
             </div>
         </form>
     </section>
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="Salvar">
+    </form>
 
 {% endblock content %}

@@ -4,7 +4,7 @@
     <section class="hero">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h1 class="title is-spaced">Mobilidade Duas Rodas</h1>
+                <h1 class="title is-spaced">Mobilidade Urbana</h1>
                 <h2 class="subtitle">Conheça as ciclofaixas e rotas ciclísticas da cidade do Recife</h2>
                 <div class="buttons is-centered">
                     <a class="control button is-primary" href="{% url 'rotas:rotas-create' %}">
@@ -14,12 +14,25 @@
                         </span>
                     </a>
                 </div>
+                <div class="is-centered">
+                    <form action="{% url 'rotas:rotas-list' %}" method="get">
+                        <div class="field has-addons">
+                            <div class="control">
+                                <input id="search" class="input" type="text" name='q' placeholder="Encontre uma rota">
+                            </div>
+                            <div class="control">
+                                <button class="button is-info" type="submit">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
             </div>
         </div>
     </section>
     <section class="section">
         <div class="container">
-            <h2 class="title has-text-centered">Some of our awesome features</h2>
+            <h2 class="title has-text-centered">Confira algumas rotas</h2>
             <div class="columns">
                 {% for rote in object_list %}
                     <div class="column is-3">
@@ -50,16 +63,4 @@
             </div>
         </div>
     </section>
-
-    {#    <a href="{% url 'rotas:rotas-create' %}" type="button">Nova Rota</a>#}
-    {##}
-    {#    {% for rote in object_list %}#}
-    {#        <section>#}
-    {#            {{ rote.nome }}#}
-    {#            <a href="{% url 'rotas:rotas-detail' rote.pk %}">Detalhes</a>#}
-    {#            <a href="{% url 'rotas:rotas-edit' rote.pk %}">Editar</a>#}
-    {#            <a href="{% url 'rotas:rotas-delete' rote.pk %}">Deletar</a>#}
-    {#        </section>#}
-    {#    {% endfor %}#}
-
 {% endblock content %}

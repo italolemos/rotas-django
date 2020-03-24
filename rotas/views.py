@@ -14,6 +14,12 @@ class RotasListView(ListView):
     model = Rotas
     template_name = 'rotas/rotas_list.html'
 
+    def get_queryset(self):
+        queryset = super(RotasListView, self).get_queryset()
+        if self.request.GET.get('q'):
+            queryset = Rotas.objects.filter(nome__icontains=self.request.GET.get('q'))
+        return queryset
+
 
 class RotasDetailView(DetailView):
     model = Rotas
