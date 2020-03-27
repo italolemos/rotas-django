@@ -40,7 +40,7 @@
                 {% for rote in object_list %}
                     <div class="column is-3 box">
                         <h4 class="title is-spaced is-4">{{ rote.nome }}</h4>
-                        <p class="subtitle is-6">{{ rote.descricao|truncatechars:20 }}</p>
+                        <p class="subtitle is-6">{{ rote.descricao|truncatechars:30 }}</p>
                         <div class="buttons are-small">
                             <a class="button is-info" href="{% url 'rotas:rotas-detail' rote.pk %}">
                                 <span>Detalhes</span>

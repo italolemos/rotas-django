@@ -4,27 +4,21 @@
     </form>
     <section class="section">
         <form method="post">{% csrf_token %}
-            <div class="field">
-                <label class="label">{{ form.nome.label }}</label>
+            {% for field in form %}
+                 <div class="field">
+                <label class="label" for="{{ field.id_for_label }}">{{ field.label }}</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Text input" value="{{ form.nome.value }}"
-                           id="{{ form.nome.id_for_label }}" name="{{ form.nome.html_name }}">
+                    <input class="input {% if field.errors %}is-danger{% endif %}"  type="text" id="{{ field.id_for_label }}" name="{{ field.html_name }}" value="{{ field.value|default_if_none:"" }}" maxlength="{{ field.field.max_length }}">
                 </div>
+                {% if field.errors %}
+                    <ol>
+                        {% for error in field.errors %}
+                            <li class="help is-danger has-text-weight-bold">{{ error|escape }}</li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
             </div>
-            <div class="field">
-                <label class="label">{{ form.descricao.label }}</label>
-                <div class="control">
-                    <input class="input" type="text" value="{{ form.descricao.value }}"
-                           id="{{ form.descricao.id_for_label }}" name="{{ form.descricao.html_name }}">
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">{{ form.tamanho.label }}</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Text input" value="{{ form.tamanho.value }}"
-                           id="{{ form.tamanho.id_for_label }}" name="{{ form.tamanho.html_name }}">
-                </div>
-            </div>
+            {% endfor %}
             <div class="field ">
                 <div class="control">
                     <button type="submit" class="button is-success">
