@@ -27,9 +27,9 @@
 
 <div class="container is-fluid">
     <br>
-    {% block content %}
+    {% include 'messages.html' %}
+    {% block content %}{% endblock content %}
 
-    {% endblock content %}
     <footer class="footer">
         <div class="container">
             <div class="columns">

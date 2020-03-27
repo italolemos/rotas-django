@@ -1,12 +1,15 @@
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 
 from .models import Rotas
+from .forms import RotasForm
 
 
-class RotasCreateView(CreateView):
+class RotasCreateView(SuccessMessageMixin, CreateView):
     model = Rotas
-    fields = '__all__'
+    form_class = RotasForm
+    success_message = "%(nome)s salvo com sucesso!"
     success_url = reverse_lazy('rotas:rotas-list')
 
 
@@ -25,10 +28,11 @@ class RotasDetailView(DetailView):
     model = Rotas
 
 
-class RotasUpdateView(UpdateView):
+class RotasUpdateView(SuccessMessageMixin, UpdateView):
     model = Rotas
     fields = '__all__'
     template_name_suffix = '_update_form'
+    success_message = "%(nome)s salvo com sucesso!"
     success_url = reverse_lazy('rotas:rotas-list')
 
 

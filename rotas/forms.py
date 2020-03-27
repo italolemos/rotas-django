@@ -4,7 +4,9 @@ from .models import Rotas
 
 
 class RotasForm(forms.ModelForm):
-    descricao = forms.CharField(widget=forms.Textarea)
+    nome = forms.CharField(widget=forms.TextInput(attrs={'class': "input"}))
+    descricao = forms.CharField(widget=forms.Textarea(attrs={'class': 'textarea', 'rows': 5}))
+    tamanho = forms.CharField(widget=forms.TextInput(attrs={'class': "input"}))
 
     class Meta:
         model = Rotas
