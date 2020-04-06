@@ -8,7 +8,6 @@
                 <label class="label" for="{{ field.id_for_label }}">{{ field.label }}</label>
                 <div class="control">
                     {{ field }}
-{#                    <input class="input {% if field.errors %}is-danger{% endif %}"  type="text" id="{{ field.id_for_label }}" name="{{ field.html_name }}" value="{{ field.value|default_if_none:"" }}" maxlength="{{ field.field.max_length }}">#}
                 </div>
                 {% if field.errors %}
                     <ol>
